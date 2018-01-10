@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rentaroom</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  
+    <style>
+
+      body {
+          background: url("../image1.jpg");
+          background-size:cover;
+          background-repeat: no-repeat;
+          width: 99%;
+      }
+    </style>
+
+
+  <body>
+       <% if user_signed_in? %> 
+            welcome <%= current_user.email %> 
+            <%= link_to "Account Setting", edit_user_registration_path %>  | <%= link_to "Logout", destroy_user_session_path, method: :delete %>  
+      <% else %>
+            <%= link_to "Register", new_user_registration_path %> 
+            | <%= link_to "Login", new_user_session_path %> 
+      <% end %>
+
+        | <%= link_to "Rooms", rooms_path %> 
+        | <%= link_to "cities" , cities_path%>
+         | <%= link_to "Amenities", amenities_path %>
+         | <%= link_to "Unconfirmed_bookings", bookings_unconfirmed_bookings_path %>
+          | <%= link_to "Unauthorized_rooms", rooms_unauthorized_rooms_path %>
+          |<%= link_to "My Rooms", rooms_my_rooms_path%>
+
+
+
+         <%= notice %>
+    <%= yield %>
+  </body>
+</html>

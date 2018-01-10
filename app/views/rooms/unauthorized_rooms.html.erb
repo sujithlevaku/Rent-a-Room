@@ -1,0 +1,27 @@
+
+
+
+
+
+
+<% if @rooms.empty? %>
+  <h2>No Rooms Found</h2>
+<% else %>
+  <h2>Listing Unauthorized Rooms</h2>
+  <ul>
+    <% @rooms.each do |room| %>
+      <li>
+        <p> Name : <%= room.name %> </p>
+        <p> Is_Authorized : <%= room.is_authorized %> </p>
+        <p>
+          <%= form_for room do |f| %>
+            <%= f.check_box :is_authorized %>
+            <%= f.submit "Authorize Room"%>
+          <% end %>
+        </p>
+        <p><%= link_to "Show", room_path(room.id) %></p>
+        <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,18 @@
+
+
+<p>
+    <%= form_for @booking do |f| %>
+    <% if @booking.errors.any? %>
+    	<% @booking.errors.full_messages.each do |msg|%>
+    	<%= msg%>
+    	<%end%>
+    <%end%>
+    <%= f.date_select :start_date%>
+    <%= f.date_select :end_date%>
+    <%=  f.hidden_field :room_id, value: @booking.room_id%>
+    <%= f.number_field :price%>
+    <%= f.submit %>
+
+    <%end%>
+
+</p>

@@ -1,0 +1,98 @@
+<p id="notice"><%= notice %></p>
+
+
+
+
+<p>
+  <%= image_tag @room.image %>
+</p>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @room.price %>
+</p>
+
+
+
+
+<p>
+    <%= form_for @booking do |f| %>
+    <%= f.date_select :start_date%>
+    <%= f.date_select :end_date%>
+    <%=  f.hidden_field :room_id, value: @room.id%>
+    <%= f.submit %>
+
+    <%end%>
+
+</p>
+
+
+<p>
+  <strong>Address:</strong>
+  <%= @room.address %>
+</p>
+
+
+
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @room.description %>
+</p>
+
+
+<p>
+  <strong>Amenities:</strong>
+  <ul>
+  <% @room.amenities.each do |amenity|  %>
+
+  <li><%= amenity.name %></li>
+  <%end%>
+</ul>
+
+</p>
+
+
+<p>
+  <strong>Rules:</strong>
+  <%= @room.rules %>
+</p>
+
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @room.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @room.longitude %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @room.city.name %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>
+
+
+<p>
+<iframe
+  width="500"
+  height="350"
+  frameborder="10" style="border:20"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAX2sQ4tAAnRSwl5r25NyPSfdgUo5CSBPM
+    &q= <%= @room.latitude%>,<%= @room.longitude %>" allowfullscreen>
+</iframe>
+</p>

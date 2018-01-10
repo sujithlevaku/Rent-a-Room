@@ -1,0 +1,25 @@
+
+
+		<h1><b>Your Booked</b></h1>
+		<p><%= image_tag @booking.room.image %></p>
+		<p><b>Room Name : </b><%= @booking.room.name %></p>
+		<p><b>Address : </b><%= @booking.room.address %></p>
+		
+		
+		<p><b>Check In : </b><%= @booking.start_date %></p>
+		<p><b>Check Out : </b><%= @booking.end_date %></p>
+		<p><b>Days : </b><%= (@booking.start_date..@booking.end_date).count %></p>
+		<p><b>Price : </b><%= @booking.room.price %></p>
+
+
+
+
+		<p><b>User : </b><%= @booking.user.username %></p>
+		<p><b> Mobile : </b><%= @booking.user.mobile %></p>
+		<p><b> Room_Name : </b><%= @booking.room.name %></p>
+		<p><b> Start_Date : </b><%= @booking.start_date %> </p>
+		<p><b> End_Date : </b><%= @booking.end_date %></p>
+		<p><b> Is_Confirmed : </b><%= @booking.is_confirmed %></p>
+		<p><b> Total Price : </b><%= @booking.price %></p>
+
+		
