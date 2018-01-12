@@ -1,7 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-
-
 
 <p>
   <%= image_tag @room.image %>
@@ -23,10 +19,10 @@
 
 <p>
     <%= form_for @booking do |f| %>
-    <%= f.date_select :start_date%>
-    <%= f.date_select :end_date%>
+    <p>Check In :<%= f.date_select :start_date%></p>
+    <p>Check Out: <%= f.date_select :end_date%></p>
     <%=  f.hidden_field :room_id, value: @room.id%>
-    <%= f.submit %>
+    <%= f.submit "Request to Book"%>
 
     <%end%>
 

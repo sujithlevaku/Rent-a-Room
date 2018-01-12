@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
+	before_action :authenticate_user!,except: [:index,:show]
 
-	
+	  load_and_authorize_resource
+
 
 	def index
 		@bookings = current_user.bookings
@@ -19,7 +21,7 @@ class BookingsController < ApplicationController
 		@booking = Booking.new(booking_params)		
 		@booking.user_id = current_user.id		
 		if @booking.save			
-			redirect_to bookings_path	
+			redirect_to @booking	
 		else
 			render action: "new"
 
@@ -43,9 +45,10 @@ class BookingsController < ApplicationController
 	def destroy
 		@booking = Booking.find(params[:id])
 		if @booking.destroy
-		redirect_to room_path(@booking.room_id)
+		redirect_to bookings_path
 		end
 	end
+	
 	def unconfirmed_bookings
 		@bookings = Booking.where("is_confirmed = ?" , false ) 
 

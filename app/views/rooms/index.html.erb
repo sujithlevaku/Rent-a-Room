@@ -9,7 +9,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Price</th>
-      <th>Rules</th>
+      <th>Owner</th>
       <th>Address</th>
       
       <th>City</th>
@@ -24,7 +24,7 @@
         <td><%=link_to room.name,room %></td>
         <td><%= room.description %></td>
         <td><%= room.price %></td>
-        <td><%= room.rules %></td>
+        <td><%= room.user.username %></td>
         <td><%= room.address %></td>
         <td><%= room.city.name %></td>
         <td><%= link_to 'Edit', edit_room_path(room) %></td>

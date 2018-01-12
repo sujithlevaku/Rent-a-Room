@@ -5,15 +5,14 @@ class Room < ApplicationRecord
 	
 	has_many :amenity_rooms
 	has_many :amenities, through: :amenity_rooms
-	validates_presence_of :name,:description,:price,:rules,:image
+	validates_presence_of :name,:price,:rules,:image
 	mount_uploader :image, CoverUploader
-	after_save :set_values
+	before_save :set_values
 	before_create :update_guest_to_host
 
 
 
  	def update_guest_to_host 
- 			binding.pry
    			self.user.update_attributes(role_id: Role.last.id)
  	end
 
@@ -25,7 +24,8 @@ class Room < ApplicationRecord
 			self.latitude = "#{has_json["results"][0]["geometry"]["location"]["lat"]}"
 			self.longitude = "#{has_json["results"][0]["geometry"]["location"]["lng"]}"
 			self.address = "#{has_json["results"][0]["formatted_address"]}"
-		
+			self.description = Faker::Lorem.paragraphs(1, true)
+			binding.pry
 	end
 
 

@@ -14,6 +14,7 @@ gem 'carrierwave'
 gem 'httparty'
 gem 'will_paginate' 
 gem 'cancancan'
+gem 'faker'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

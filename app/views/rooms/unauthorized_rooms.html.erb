@@ -1,9 +1,4 @@
 
-
-
-
-
-
 <% if @rooms.empty? %>
   <h2>No Rooms Found</h2>
 <% else %>
@@ -13,9 +8,11 @@
       <li>
         <p> Name : <%= room.name %> </p>
         <p> Is_Authorized : <%= room.is_authorized %> </p>
+        <p> Room Owner : <%= room.user.username %> </p>
+
         <p>
           <%= form_for room do |f| %>
-            <%= f.check_box :is_authorized %>
+            <%= f.hidden_field :is_authorized, value: true %>
             <%= f.submit "Authorize Room"%>
           <% end %>
         </p>

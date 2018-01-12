@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
 
   # GET /rooms
   # GET /rooms.json
@@ -67,9 +68,9 @@ class RoomsController < ApplicationController
 
   def unauthorized_rooms
     
-      #if current_user.role?("admin")
+      if current_user.role?("admin")
           @rooms = Room.where("is_authorized = ?",false)
-      #end
+      end
   end
   def my_rooms
     @rooms = current_user.rooms
