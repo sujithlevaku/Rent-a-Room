@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+      before_action :authenticate_user!, except: [:index,:show]
+
   before_action :set_room, only: [:show, :edit, :update, :destroy]
     load_and_authorize_resource
 
@@ -29,7 +31,6 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     @room.user_id = current_user.id
-    binding.pry
     respond_to do |format|
       if @room.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
@@ -70,6 +71,7 @@ class RoomsController < ApplicationController
     
       if current_user.role?("admin")
           @rooms = Room.where("is_authorized = ?",false)
+          
       end
   end
   def my_rooms

@@ -2,6 +2,7 @@ class User < ApplicationRecord
 belongs_to :role
 has_many :rooms
 has_many :bookings
+has_many :reviews
 
 before_validation :assign_guest_role, on: :create
   # Include default devise modules. Others available are:

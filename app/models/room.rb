@@ -2,6 +2,7 @@ class Room < ApplicationRecord
 	belongs_to :user
 	belongs_to :city
 	has_many :bookings
+	has_many :reviews
 	
 	has_many :amenity_rooms
 	has_many :amenities, through: :amenity_rooms
@@ -25,7 +26,6 @@ class Room < ApplicationRecord
 			self.longitude = "#{has_json["results"][0]["geometry"]["location"]["lng"]}"
 			self.address = "#{has_json["results"][0]["formatted_address"]}"
 			self.description = Faker::Lorem.paragraphs(1, true)
-			binding.pry
 	end
 
 
@@ -41,9 +41,9 @@ class Room < ApplicationRecord
 
 	def self.search(term, page)
 		  if term
-		    where('name LIKE ?', "%#{term}%").paginate(page: page, per_page: 3).order('id DESC')
+		    where('name LIKE ?', "%#{term}%").paginate(page: page, per_page: 5).order('id DESC')
 		  else
-		    paginate(page: page, per_page: 3).order('id DESC') 
+		    paginate(page: page, per_page: 5).order('id DESC') 
 		  end
 	end
 
