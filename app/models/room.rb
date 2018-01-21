@@ -3,6 +3,7 @@ class Room < ApplicationRecord
 	belongs_to :city
 	has_many :bookings
 	has_many :reviews
+	has_many :special_prices
 	
 	has_many :amenity_rooms
 	has_many :amenities, through: :amenity_rooms

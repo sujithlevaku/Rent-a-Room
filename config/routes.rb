@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :special_prices
   resources :amenities
   get "rooms/unauthorized_rooms"
   get "rooms/my_rooms"

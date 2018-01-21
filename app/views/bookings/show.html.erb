@@ -1,6 +1,6 @@
 
 
-		<h1><b>Your Room Booked</b></h1>
+		<h1><b>Your Room has Booked & Waiting for Confirmation </b></h1>
 		<p><%= image_tag @booking.room.image %></p>
 		<p><b>Room Name : </b><%= @booking.room.name %></p>
 		<p><b>Address : </b><%= @booking.room.address %></p>
@@ -14,12 +14,52 @@
 
 
 
-		<p><b>User : </b><%= @booking.user.username %></p>
+		<p><b>Owner: </b><%= @booking.room.user.username %></p>
 		<p><b> Mobile : </b><%= @booking.user.mobile %></p>
 		<p><b> Room_Name : </b><%= @booking.room.name %></p>
 		<p><b> Start_Date : </b><%= @booking.start_date %> </p>
 		<p><b> End_Date : </b><%= @booking.end_date %></p>
 		<p><b> Is_Confirmed : </b><%= @booking.is_confirmed %></p>
 		<p><b> Total Price : </b><%= @booking.price %></p>
+
+
+<h3>Add Review</h3>
+
+<%= form_for Review.new do |f|%>
+
+  <%= f.hidden_field :room_id, value: @booking.room.id%> 
+
+      <label> <b>Cleanliness Rating :</b> </label>
+    <%= f.radio_button :cleanliness_rating, 1 %> 1
+    <%= f.radio_button :cleanliness_rating, 2 %> 2
+    <%= f.radio_button :cleanliness_rating, 3 %> 3
+    <%= f.radio_button :cleanliness_rating, 4 %> 4
+    <%= f.radio_button :cleanliness_rating, 5 %> 5 <br/>
+    <label> <b>Safety Rating :</b> </label>
+    <%= f.radio_button :safety_rating, 1 %> 1
+    <%= f.radio_button :safety_rating, 2 %> 2
+    <%= f.radio_button :safety_rating, 3 %> 3
+    <%= f.radio_button :safety_rating, 4 %> 4
+    <%= f.radio_button :safety_rating, 5 %> 5 <br/>
+
+    <label> <b>Facility Rating :</b> </label>
+    <%= f.radio_button :facility_rating, 1 %> 1
+    <%= f.radio_button :facility_rating, 2 %> 2
+    <%= f.radio_button :facility_rating, 3 %> 3
+    <%= f.radio_button :facility_rating, 4 %> 4
+    <%= f.radio_button :facility_rating, 5 %> 5 <br/>
+
+    <label> <b>Locality Rating :</b> </label>
+    <%= f.radio_button :locality_rating, 1 %> 1
+    <%= f.radio_button :locality_rating, 2 %> 2
+    <%= f.radio_button :locality_rating, 3 %> 3
+    <%= f.radio_button :locality_rating, 4 %> 4
+    <%= f.radio_button :locality_rating, 5 %> 5 <br/>
+      <label for = "review_body"> <b>Body : </b> </label><br/>
+      <%= f.text_area :review  %><br/>
+
+    <%= f.submit "Add Review" %>
+
+<%end%>
 
 		

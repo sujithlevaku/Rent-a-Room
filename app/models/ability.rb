@@ -16,13 +16,27 @@ class Ability
                 can [:update, :destroy], Room do |room|
                     room.user_id == user.id 
                 end
+
                 can [:update, :destroy], Booking do |booking|
                     booking.room.user_id == user.id
                 end 
                 can :unconfirmed_bookings, Booking
+                can :create, SpecialPrice
+                can [:update, :destroy], SpecialPrice do |special_price|
+                    special_price.room.user_id == user.id
+                end
+                can [:read, :create], Review
+                can [:update, :destroy], Review do |review|
+                    review.user_id == user.id
+                end
+
             elsif user.role? "guest"
                 can :read, [Room, Amenity, City, Booking]
                 can :create, [Room, Booking]
+                can [:read, :create], Review
+                can [:update, :destroy], Review do |review|
+                    review.user_id == user.id
+                end
             end 
   end
 end

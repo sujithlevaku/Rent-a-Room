@@ -29,6 +29,24 @@
 </p>
 
 
+
+
+<p>
+    <%= form_for SpecialPrice.new do |f| %>
+    <p>Start date :<%= f.date_select :start_date%></p>
+    <p> End date: <%= f.date_select :end_date%></p>
+    <%=  f.hidden_field :room_id, value: @room.id%>
+    <p>SpecialPrice:<%= f.text_field :price%></p>
+    <%= f.submit "Add Price"%>
+
+    <%end%>
+
+</p>
+
+<%= link_to 'Add Special Price', new_special_price_path %>
+
+
+
 <p>
   <strong>Address:</strong>
   <%= @room.address %>
@@ -81,7 +99,7 @@
 <h2> Reviews</h2>
 
 <%if @room.reviews.empty?%>
-<p>No reviews found be the first one to review </p>
+<p>No reviews found ! </p>
 <%else%>
 <h3>Listing Reviews</h3>
 <ol>
@@ -98,45 +116,6 @@
 
 
 
-
-<h3>Add Review</h3>
-
-<%= form_for Review.new do |f|%>
-
-  <%= f.hidden_field :room_id, value: @room.id%> 
-
-      <label> <b>Cleanliness Rating :</b> </label>
-    <%= f.radio_button :cleanliness_rating, 1 %> 1
-    <%= f.radio_button :cleanliness_rating, 2 %> 2
-    <%= f.radio_button :cleanliness_rating, 3 %> 3
-    <%= f.radio_button :cleanliness_rating, 4 %> 4
-    <%= f.radio_button :cleanliness_rating, 5 %> 5 <br/>
-    <label> <b>Safety Rating :</b> </label>
-    <%= f.radio_button :safety_rating, 1 %> 1
-    <%= f.radio_button :safety_rating, 2 %> 2
-    <%= f.radio_button :safety_rating, 3 %> 3
-    <%= f.radio_button :safety_rating, 4 %> 4
-    <%= f.radio_button :safety_rating, 5 %> 5 <br/>
-
-    <label> <b>Facility Rating :</b> </label>
-    <%= f.radio_button :facility_rating, 1 %> 1
-    <%= f.radio_button :facility_rating, 2 %> 2
-    <%= f.radio_button :facility_rating, 3 %> 3
-    <%= f.radio_button :facility_rating, 4 %> 4
-    <%= f.radio_button :facility_rating, 5 %> 5 <br/>
-
-    <label> <b>Locality Rating :</b> </label>
-    <%= f.radio_button :locality_rating, 1 %> 1
-    <%= f.radio_button :locality_rating, 2 %> 2
-    <%= f.radio_button :locality_rating, 3 %> 3
-    <%= f.radio_button :locality_rating, 4 %> 4
-    <%= f.radio_button :locality_rating, 5 %> 5 <br/>
-      <label for = "review_body"> <b>Body : </b> </label><br/>
-      <%= f.text_area :review  %><br/>
-
-    <%= f.submit "Add Review" %>
-
-<%end%>
    
 
 
