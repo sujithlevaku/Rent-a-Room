@@ -36,8 +36,8 @@
 
 
 <h3>select Amenities </h3>
-  <%= form.collection_check_boxes :amenity_ids, Amenity.all, :id, :name do |course|%>
-  <p><%= course.label%> <%= course.check_box%> </p>
+  <%= form.collection_check_boxes :amenity_ids, Amenity.all, :id, :name do |amenity|%>
+  <p><%= amenity.label%> <%= amenity.check_box%> </p>
   
   <%end%>
 

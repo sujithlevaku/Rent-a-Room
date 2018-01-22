@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
 	def destroy
 		@review = Review.find(params[:id])
 		if @review.destroy
-		redirect_to product_path(@review.product_id)
+		redirect_to room_path(@review.room_id)
 		end
 
 	end

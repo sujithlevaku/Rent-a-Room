@@ -19,8 +19,11 @@ class BookingsController < ApplicationController
 
 	def create 
 		@booking = Booking.new(booking_params)		
-		@booking.user_id = current_user.id		
-		if @booking.save			
+		@booking.user_id = current_user.id	
+	
+		if @booking.save	
+		#		NotificationMailer.booking_confirmation(@booking).deliver!
+		
 			redirect_to @booking	
 		else
 			render action: "new"

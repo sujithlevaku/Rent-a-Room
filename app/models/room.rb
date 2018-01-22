@@ -7,7 +7,7 @@ class Room < ApplicationRecord
 	
 	has_many :amenity_rooms
 	has_many :amenities, through: :amenity_rooms
-	validates_presence_of :name,:price,:rules,:image
+	validates_presence_of :name,:price,:rules,:image,:latitude,:longitude,:address,:description
 	mount_uploader :image, CoverUploader
 	before_save :set_values
 	before_create :update_guest_to_host

@@ -23,43 +23,45 @@
 		<p><b> Total Price : </b><%= @booking.price %></p>
 
 
-<h3>Add Review</h3>
 
-<%= form_for Review.new do |f|%>
+  <%if Review.where("user_id = ? AND room_id = ?", current_user.id, @booking.room_id).length < Booking.where("user_id = ? AND room_id = ? AND end_date = ? ", current_user.id , @booking.room_id , Date.today).length%>
+        <h3>Add Review</h3>
 
-  <%= f.hidden_field :room_id, value: @booking.room.id%> 
+        <%= form_for Review.new do |f|%>
 
-      <label> <b>Cleanliness Rating :</b> </label>
-    <%= f.radio_button :cleanliness_rating, 1 %> 1
-    <%= f.radio_button :cleanliness_rating, 2 %> 2
-    <%= f.radio_button :cleanliness_rating, 3 %> 3
-    <%= f.radio_button :cleanliness_rating, 4 %> 4
-    <%= f.radio_button :cleanliness_rating, 5 %> 5 <br/>
-    <label> <b>Safety Rating :</b> </label>
-    <%= f.radio_button :safety_rating, 1 %> 1
-    <%= f.radio_button :safety_rating, 2 %> 2
-    <%= f.radio_button :safety_rating, 3 %> 3
-    <%= f.radio_button :safety_rating, 4 %> 4
-    <%= f.radio_button :safety_rating, 5 %> 5 <br/>
+          <%= f.hidden_field :room_id, value: @booking.room.id%> 
 
-    <label> <b>Facility Rating :</b> </label>
-    <%= f.radio_button :facility_rating, 1 %> 1
-    <%= f.radio_button :facility_rating, 2 %> 2
-    <%= f.radio_button :facility_rating, 3 %> 3
-    <%= f.radio_button :facility_rating, 4 %> 4
-    <%= f.radio_button :facility_rating, 5 %> 5 <br/>
+              <label> <b>Cleanliness Rating :</b> </label>
+            <%= f.radio_button :cleanliness_rating, 1 %> 1
+            <%= f.radio_button :cleanliness_rating, 2 %> 2
+            <%= f.radio_button :cleanliness_rating, 3 %> 3
+            <%= f.radio_button :cleanliness_rating, 4 %> 4
+            <%= f.radio_button :cleanliness_rating, 5 %> 5 <br/>
+            <label> <b>Safety Rating :</b> </label>
+            <%= f.radio_button :safety_rating, 1 %> 1
+            <%= f.radio_button :safety_rating, 2 %> 2
+            <%= f.radio_button :safety_rating, 3 %> 3
+            <%= f.radio_button :safety_rating, 4 %> 4
+            <%= f.radio_button :safety_rating, 5 %> 5 <br/>
 
-    <label> <b>Locality Rating :</b> </label>
-    <%= f.radio_button :locality_rating, 1 %> 1
-    <%= f.radio_button :locality_rating, 2 %> 2
-    <%= f.radio_button :locality_rating, 3 %> 3
-    <%= f.radio_button :locality_rating, 4 %> 4
-    <%= f.radio_button :locality_rating, 5 %> 5 <br/>
-      <label for = "review_body"> <b>Body : </b> </label><br/>
-      <%= f.text_area :review  %><br/>
+            <label> <b>Facility Rating :</b> </label>
+            <%= f.radio_button :facility_rating, 1 %> 1
+            <%= f.radio_button :facility_rating, 2 %> 2
+            <%= f.radio_button :facility_rating, 3 %> 3
+            <%= f.radio_button :facility_rating, 4 %> 4
+            <%= f.radio_button :facility_rating, 5 %> 5 <br/>
 
-    <%= f.submit "Add Review" %>
+            <label> <b>Locality Rating :</b> </label>
+            <%= f.radio_button :locality_rating, 1 %> 1
+            <%= f.radio_button :locality_rating, 2 %> 2
+            <%= f.radio_button :locality_rating, 3 %> 3
+            <%= f.radio_button :locality_rating, 4 %> 4
+            <%= f.radio_button :locality_rating, 5 %> 5 <br/>
+              <label for = "review_body"> <b>Body : </b> </label><br/>
+              <%= f.text_area :review  %><br/>
 
+            <%= f.submit "Add Review" %>
+
+        <%end%>
 <%end%>
-
 		

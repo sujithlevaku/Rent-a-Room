@@ -21,7 +21,7 @@ class Ability
                     booking.room.user_id == user.id
                 end 
                 can :unconfirmed_bookings, Booking
-                can :create, SpecialPrice
+                can :create, SpecialPrice 
                 can [:update, :destroy], SpecialPrice do |special_price|
                     special_price.room.user_id == user.id
                 end

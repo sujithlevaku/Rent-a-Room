@@ -30,7 +30,7 @@ class SpecialPricesController < ApplicationController
 
     respond_to do |format|
       if @special_price.save
-        format.html { redirect_to @special_price, notice: 'Special price was successfully created.' }
+        format.html { redirect_to room_path(@special_price.room), notice: 'Special price was successfully created.' }
         format.json { render :show, status: :created, location: @special_price }
       else
         format.html { render :new }

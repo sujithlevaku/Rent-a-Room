@@ -26,16 +26,22 @@
         <td><%= room.user.username %></td>
         <td><%= room.address %></td>
         <td><%= room.city.name %></td>
+      <% if (user_signed_in?) && (can? :edit, room) %>
         <td><%= link_to 'Edit', edit_room_path(room) %></td>
+      <%end%>
+      <% if (user_signed_in?) && (can? :destroy, room) %>
         <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% if (user_signed_in?) && (can? :create, Room.new) %>
 
-<%= link_to 'New Room', new_room_path %>
+  <%= link_to 'New Room', new_room_path %>
+  <%end%>
 
 <div class="apple_pagination">
   <div class="page_info">

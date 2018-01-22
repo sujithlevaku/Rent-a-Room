@@ -4,8 +4,54 @@
 		<% if @bookings.empty? %>
 			<p> No Bookings Found </p>
 		<% else %>
+		<h3>Past Bookings</h3>
 				<ol>
 					<% @bookings.each do |booking| %>
+							<%if booking.end_date < Date.today%>
+
+						<li>
+							<p><b> Room_Name : </b><%= booking.room.name %></p>
+							<p><b> Start_Date : </b><%= booking.start_date %> </p>
+							<p><b> End_Date : </b><%= booking.end_date %></p>
+							<p><b> Is_Confirmed : </b><%= booking.is_confirmed %></p>
+							<p><b> Price : </b><%= booking.price %></p>
+							<%= link_to "Show", booking %>
+							
+						</li>
+							<%end%>
+
+					<% end %>
+	
+				</ol>
+
+
+				<h3>Present Bookings</h3>
+				<ol>
+					<% @bookings.each do |booking| %>
+							<%if (booking.start_date..booking.end_date).to_a.include? Date.today%>
+
+						<li>
+							<p><b> Room_Name : </b><%= booking.room.name %></p>
+							<p><b> Start_Date : </b><%= booking.start_date %> </p>
+							<p><b> End_Date : </b><%= booking.end_date %></p>
+							<p><b> Is_Confirmed : </b><%= booking.is_confirmed %></p>
+							<p><b> Price : </b><%= booking.price %></p>
+							<%= link_to "Show", booking %>
+							
+						</li>
+							<%end%>
+
+					<% end %>
+	
+				</ol>
+
+
+
+				<h3>Future Bookings</h3>
+				<ol>
+					<% @bookings.each do |booking| %>
+							<%if booking.start_date >  Date.today%>
+
 						<li>
 							<p><b> Room_Name : </b><%= booking.room.name %></p>
 							<p><b> Start_Date : </b><%= booking.start_date %> </p>
@@ -15,6 +61,42 @@
 							<%= link_to "Show", booking %>
 							<%= link_to "Cancel Booking", booking, method: :delete, data: { confirm: 'Are you sure?' } %>
 						</li>
+							<%end%>
+
 					<% end %>
+	
 				</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<% end %>

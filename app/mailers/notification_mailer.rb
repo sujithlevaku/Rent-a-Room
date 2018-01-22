@@ -5,9 +5,16 @@ class NotificationMailer < ApplicationMailer
   #
   #   en.notification_mailer.booking_confirmation.subject
   #
-  def booking_confirmation
-    @greeting = "Hi"
+  
+  def booking_confirmation(booking)
+    @booking = booking
 
-    mail to: "to@example.org"
+    mail to: "#{@booking.user.email}",subject: "Your booking has been confirmed & waiting for confirmation"
+  end
+def welcome_message(user)
+
+    @user = user
+
+    mail to: "#{user.email}" , subject: "Created Account Succcessfully"
   end
 end
