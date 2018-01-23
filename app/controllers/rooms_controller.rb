@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.where("is_authorized = ?", true).search(params[:term], params[:page])
+    @rooms = Room.where("is_authorized = ?", true).order(price: :DESC).search(params[:term], params[:page])
 
   end
 

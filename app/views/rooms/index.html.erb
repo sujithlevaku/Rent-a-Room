@@ -38,7 +38,7 @@
 </table>
 
 <br>
-<% if (user_signed_in?) && (can? :create, Room.new) %>
+<% if (user_signed_in?)%>
 
   <%= link_to 'New Room', new_room_path %>
   <%end%>
