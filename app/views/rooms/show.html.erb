@@ -99,10 +99,16 @@
 <p>
   <strong>Owner:</strong>
   <%= @room.user.username %>
+
 </p>
+<h2>Listing other rooms of (<%=@room.user.username%>) </h2>
+  
+<% @room.user.rooms.each do |room| %>
+  <%unless @room.id == room.id %>
+     <li><%= image_tag room.image , size: "50x50" %><%=link_to room.name, room_path(room) %></li>
 
-
-
+    <%end%>
+<%end%>
 
 <h2> Reviews</h2>
 
