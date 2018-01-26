@@ -13,7 +13,7 @@ before_validation :assign_guest_role, on: :create
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable , :confirmable
          # after_create :assign_guest_role
 
           def assign_guest_role  

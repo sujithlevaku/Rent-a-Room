@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "rooms/unauthorized_rooms"
   get "rooms/my_rooms"
   resources :rooms
-  devise_for :users
+  devise_for :users, controllers: { confirmations: 'confirmations' }
   resources :cities
   resources :roles
   get "bookings/unconfirmed_bookings"
